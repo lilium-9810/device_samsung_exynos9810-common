@@ -80,6 +80,9 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_COPY_OUT_PRODUCT := system/product
 
+## Graphics
+TARGET_USES_VULKAN := true
+
 ## Fingerprint
 TARGET_SEC_FP_HAS_FINGERPRINT_GESTURES := true
 
@@ -89,7 +92,7 @@ USE_OPENGL_RENDERER := true
 # HWUI
 HWUI_COMPILE_FOR_PERF := true
 
-# Kernel
+## Kernel
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
