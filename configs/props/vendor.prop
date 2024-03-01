@@ -41,6 +41,7 @@ bluetooth.profile.sap.server.enabled=true
 
 ### DALVIK
 dalvik.vm.lockprof.threshold=500
+dalvik.vm.dex2oat64.enabled=true
 
 ### FASTBOOTD
 ro.fastbootd.available=true
