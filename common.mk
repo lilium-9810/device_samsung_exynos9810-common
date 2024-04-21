@@ -319,6 +319,8 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.frameworks.sensorservice@1.0.vendor \
+    android.frameworks.sensorservice@1.0 \
     android.hardware.contexthub@1.0.vendor:64 \
     android.hardware.sensors-service.exynos9810-multihal \
     libsensorndkbridge
