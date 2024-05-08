@@ -122,6 +122,7 @@ BOARD_VENDOR := samsung
 TARGET_BOARD_PLATFORM := exynos9810
 TARGET_SLSI_VARIANT := bsp
 TARGET_SOC := exynos9810
+TARGET_SOC_BASE := exynos9810
 TARGET_SOC_NAME := exynos
 TARGET_BOOTLOADER_BOARD_NAME := exynos9810
 
@@ -150,7 +151,7 @@ ENABLE_VENDOR_RIL_SERVICE := true
 
 # Sepolicy
 BOARD_SEPOLICY_TEE_FLAVOR := mobicore
-include device/custom/sepolicy/exynos/sepolicy.mk
+include device/lineage/sepolicy/exynos/sepolicy.mk
 include device/samsung_slsi/sepolicy/sepolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
