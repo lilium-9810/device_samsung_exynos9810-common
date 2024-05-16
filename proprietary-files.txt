@@ -68,6 +68,8 @@ vendor/firmware/vts.bin
 -vendor/lib64/libuniapi.so
 -vendor/lib64/libuniplugin.so
 -vendor/lib64/libvkmanager_vendor.so
+-vendor/lib/libhwjpeg.so
+-vendor/lib64/libhwjpeg.so
 
 # Camera IDDQD plugin
 -vendor/lib/libIDDQD_core.so
