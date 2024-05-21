@@ -4,6 +4,8 @@
 vendor/etc/audio_board_info.xml
 vendor/etc/default_volume_tables.xml
 vendor/etc/usb_audio_policy_configuration.xml
+-vendor/lib/vndk/libaudioroute.so;MODULE=libaudioroute.exynos9810
+-vendor/lib/vndk/libtinyalsa.so;MODULE=libtinyalsa.exynos9810
 -vendor/lib/libSamsungPostProcessConvertor.so
 -vendor/lib/lib_SoundAlive_SRC384_ver320.so
 -vendor/lib/lib_soundaliveresampler.so
@@ -16,8 +18,6 @@ vendor/etc/usb_audio_policy_configuration.xml
 -vendor/lib/libprofileparamstorage.so
 -vendor/lib/libsecaudiocoreutils.so
 -vendor/lib/libsecaudioinfo.so
--vendor/lib/vndk/libaudioroute.so;MODULE=libaudioroute.exynos9810
--vendor/lib/vndk/libtinyalsa.so;MODULE=libtinyalsa.exynos9810
 -vendor/lib64/libfloatingfeature.so
 -vendor/lib64/libsecaudioinfo.so
 
@@ -48,28 +48,49 @@ vendor/firmware/vts.bin
 -vendor/lib64/libbt-vendor.so;MODULE=libbt-vendor.exynos9810
 
 # Camera
--vendor/lib/camera.device@1.0-impl.so;MODULE=camera.device@1.0-impl.exynos9810
--vendor/lib/camera.device@3.3-impl.so;MODULE=camera.device@3.3-impl.exynos9810
--vendor/lib/camera.device@3.5-impl.so;MODULE=camera.device@3.5-impl.exynos9810
--vendor/lib64/camera.device@1.0-impl.so;MODULE=camera.device@1.0-impl.exynos9810
--vendor/lib64/camera.device@3.3-impl.so;MODULE=camera.device@3.3-impl.exynos9810
--vendor/lib64/camera.device@3.5-impl.so;MODULE=camera.device@3.5-impl.exynos9810
+vendor/lib/android.hardware.camera.common@1.0.so
+vendor/lib/android.hardware.camera.device@1.0.so
+vendor/lib/android.hardware.camera.device@3.2.so
+vendor/lib/android.hardware.camera.device@3.3.so
+vendor/lib/android.hardware.camera.device@3.4.so
+vendor/lib/android.hardware.camera.device@3.5.so
+vendor/lib/android.hardware.camera.provider@2.4-legacy.so
+vendor/lib/android.hardware.camera.provider@2.4.so
+vendor/lib/android.hardware.camera.provider@2.5-legacy.so
+vendor/lib/android.hardware.camera.provider@2.5.so
+vendor/lib/camera.device@1.0-impl.so
+vendor/lib/camera.device@3.2-impl.so
+vendor/lib/camera.device@3.3-impl.so
+vendor/lib/camera.device@3.4-impl.so
+vendor/lib/camera.device@3.5-impl.so
+vendor/lib64/android.hardware.camera.common@1.0.so
+vendor/lib64/android.hardware.camera.device@1.0.so
+vendor/lib64/android.hardware.camera.device@3.2.so
+vendor/lib64/android.hardware.camera.device@3.3.so
+vendor/lib64/android.hardware.camera.device@3.4.so
+vendor/lib64/android.hardware.camera.device@3.5.so
+vendor/lib64/android.hardware.camera.provider@2.4.so
+vendor/lib64/camera.device@1.0-impl.so
+vendor/lib64/camera.device@3.2-impl.so
+vendor/lib64/camera.device@3.3-impl.so
+vendor/lib64/camera.device@3.4-impl.so
+vendor/lib64/camera.device@3.5-impl.so
 
 # Camera dependencies
 -vendor/lib/libSEF.quram.so
 -vendor/lib/libcnn.so
 -vendor/lib/libhfd.so
+vendor/lib/libhwjpeg.so
 -vendor/lib/libsensorlistener.so
 -vendor/lib/libuniapi.so
 -vendor/lib/libuniplugin.so
 -vendor/lib/libvkmanager_vendor.so
 -vendor/lib64/libSEF.quram.so
+vendor/lib64/libhwjpeg.so
 -vendor/lib64/libsensorlistener.so
 -vendor/lib64/libuniapi.so
 -vendor/lib64/libuniplugin.so
 -vendor/lib64/libvkmanager_vendor.so
--vendor/lib/libhwjpeg.so
--vendor/lib64/libhwjpeg.so
 
 # Camera IDDQD plugin
 -vendor/lib/libIDDQD_core.so
@@ -80,28 +101,37 @@ vendor/firmware/vts.bin
 -vendor/lib64/libOpenCv.camera.samsung.so
 
 # Camera firmware
-vendor/firmware/score/develop1/score_dummy
-vendor/firmware/score/camera1/score_kc2_pmw.bin
-vendor/firmware/score/camera1/score_kc2_dmb.bin
-vendor/firmware/score/camera1/score_mc_pmw.bin
 vendor/firmware/score/camera1/score_kc1_dmb.bin
 vendor/firmware/score/camera1/score_kc1_pmw.bin
+vendor/firmware/score/camera1/score_kc2_dmb.bin
+vendor/firmware/score/camera1/score_kc2_pmw.bin
 vendor/firmware/score/camera1/score_mc_dmb.bin
-vendor/firmware/score/camera3/score_kc2_pmw.bin
-vendor/firmware/score/camera3/score_kc2_dmb.bin
-vendor/firmware/score/camera3/score_mc_pmw.bin
-vendor/firmware/score/camera3/score_kc1_dmb.bin
-vendor/firmware/score/camera3/score_kc1_pmw.bin
-vendor/firmware/score/camera3/score_mc_dmb.bin
-vendor/firmware/score/camera2/score_kc2_pmw.bin
-vendor/firmware/score/camera2/score_kc2_dmb.bin
-vendor/firmware/score/camera2/score_mc_pmw.bin
+vendor/firmware/score/camera1/score_mc_pmw.bin
 vendor/firmware/score/camera2/score_kc1_dmb.bin
 vendor/firmware/score/camera2/score_kc1_pmw.bin
+vendor/firmware/score/camera2/score_kc2_dmb.bin
+vendor/firmware/score/camera2/score_kc2_pmw.bin
 vendor/firmware/score/camera2/score_mc_dmb.bin
+vendor/firmware/score/camera2/score_mc_pmw.bin
+vendor/firmware/score/camera3/score_kc1_dmb.bin
+vendor/firmware/score/camera3/score_kc1_pmw.bin
+vendor/firmware/score/camera3/score_kc2_dmb.bin
+vendor/firmware/score/camera3/score_kc2_pmw.bin
+vendor/firmware/score/camera3/score_mc_dmb.bin
+vendor/firmware/score/camera3/score_mc_pmw.bin
+vendor/firmware/score/develop1/score_dummy
 
 # Charger Firmware
 vendor/firmware/mfc_fw.bin
+
+# Crypto
+-vendor/lib64/libcrypto-compat.so
+
+# DRM
+vendor/lib/libdrm.so
+vendor/lib/libdrmresource.so
+vendor/lib64/libdrm.so
+vendor/lib64/libdrmresource.so
 
 # Gatekeeper
 -vendor/lib/hw/gatekeeper.exynos9810.so
@@ -111,16 +141,16 @@ vendor/firmware/mfc_fw.bin
 -vendor/bin/hw/gpsd|715cc3de92e9913cd09bd77ff561184b
 -vendor/bin/hw/lhd|7d4dfce04564545fa6a5411abba66c36
 -vendor/bin/hw/vendor.samsung.hardware.gnss@2.0-service|858caf11644eb9ba717125a06e3f929a
--vendor/etc/gnss/gps.cer|23319bc3e91ead266696fef65eb61034
--vendor/etc/gnss/gps.xml|ed0a2ac2d01d8a9712bfaeaebeb642c8
+vendor/etc/gnss/gps.cer|23319bc3e91ead266696fef65eb61034
+vendor/etc/gnss/gps.xml|ed0a2ac2d01d8a9712bfaeaebeb642c8
 -vendor/etc/init/vendor.samsung.hardware.gnss@2.0-service.rc|d92ad71448a53097d840a64c26f419a0
 -vendor/etc/sensor/lhd.conf|dc80bcd056ffd57d49b991080a7cb88e
 -vendor/lib/libwrappergps.so|009b5586e90a53e707236691d1c5ca50
--vendor/lib64/hw/gps.default.so|48808c787459404162fed1972c4ac0bb
 -vendor/lib64/hw/android.hardware.gnss@2.0-impl.so|0a37cf24a4b35f4105979f106b9c73c6
+-vendor/lib64/hw/gps.default.so|48808c787459404162fed1972c4ac0bb
 -vendor/lib64/hw/vendor.samsung.hardware.gnss@2.0-impl.so|db56839d89fe4bb6bb7ea21e205cc9b3
--vendor/lib64/vendor.samsung.hardware.gnss@2.0.so|cf9cae7ca98509d229b3636ab586db6f
 -vendor/lib64/libwrappergps.so|c3560d0fa1d78281ac1e5cc731457c17
+-vendor/lib64/vendor.samsung.hardware.gnss@2.0.so|cf9cae7ca98509d229b3636ab586db6f
 
 # Graphics/Mali - N770FXXU8HVK5
 -vendor/etc/snap_gpu_kernel_64.bin|886a578b86dc0ab9de562d0f0f53f122
@@ -160,27 +190,28 @@ vendor/app/mcRegistry/ffffffffd00000000000000000000045.drbin
 vendor/app/mcRegistry/ffffffffd00000000000000000000062.tlbin
 vendor/app/mcRegistry/fffffffff0000000000000000000001b.tlbin
 -vendor/bin/mcDriverDaemon
-vendor/etc/init/mobicore.rc
 -vendor/lib/libMcClient.so
 -vendor/lib64/libMcClient.so
 
+# Power
+vendor/lib/hw/power.exynos9810.so
+vendor/lib64/hw/power.exynos9810.so
+
 # RIL - N770FXXU8FUL7
-vendor/etc/init/init.vendor.rilchip.rc|0f5f13a11c084db5dc0eb47bb693235a2273f91e
-vendor/etc/init/init.vendor.rilcommon.rc|eb3115e335457fdc95c854190ee6804e165718f2
+-vendor/bin/hw/rild|e1782518a28bad77f29a2862dd40757309b8c0b0
+-vendor/bin/cbd|155f94ba40e72680d6125a93ad8d8c0445eff86a
 vendor/etc/plmn_delta.bin|6a826cb6a8a1d460403ab2ebccf4f0d7be546ce6
 vendor/etc/plmn_delta_attaio.bin|751a1c7105f1c03fc196689c2a71e2c69aa14e1f
 vendor/etc/plmn_delta_hktw.bin|97a5a4747e8c32d463d8f26254257309b8a03a63
 vendor/etc/plmn_delta_usagsm.bin|9a25ec9e9da16ed2f8a9db07f037fe08283b24e5
 vendor/etc/plmn_se13.bin|6445f3c7ee35c59999de2fdd47c718048a3f550f
--vendor/bin/cbd|155f94ba40e72680d6125a93ad8d8c0445eff86a
--vendor/bin/hw/rild|e1782518a28bad77f29a2862dd40757309b8c0b0
 -vendor/lib/libaudio-ril.so|47e9bbb359a498409146d02dd6228b43410475f8
 -vendor/lib/libsecril-client.so;MODULE=libsecril-client.exynos9810|4d5ee418f73e7f644220462f9c0eaefdcb54153a
 -vendor/lib/libsemnativecarrierfeature.so|a25d959ddf046b26d678011b5e1d4dd1dc09f809
 -vendor/lib64/libengmode_client.so|a7d678bad7a8c3b9729ff3d56cc35159ece548a3
 -vendor/lib64/libril-samsung.so|cf62752d95d5bd16fe2613ee0b4ab1cb5328b37c
--vendor/lib64/libsec-ril.so|70435309ef64f8fc5bee3f8ac36c00c468d28ec8
 -vendor/lib64/libsec-ril-dsds.so|d4f419fe6372147671062f4f909d4b14de485358
+-vendor/lib64/libsec-ril.so|70435309ef64f8fc5bee3f8ac36c00c468d28ec8
 -vendor/lib64/libsecril-client.so;MODULE=libsecril-client.exynos9810|f63f4a658dec8e419f5316d3d0db086bdb17d595
 -vendor/lib64/libsemnativecarrierfeature.so|b9663215a8cae356b4ddf86790359beda9c30f47
 -vendor/lib64/vendor.samsung.hardware.radio.bridge@2.0.so|4f803c313c74e161a871bac17581ee5f01d076ec
@@ -216,14 +247,17 @@ vendor/etc/sensors/hals.conf
 vendor/lib/hw/thermal.exynos9810.so
 vendor/lib64/hw/thermal.exynos9810.so
 
+# Vulkan
+vendor/lib/hw/vulkan.mali.so
+vendor/lib64/hw/vulkan.mali.so
+
 # Widevine - N770FXXU8HVK5
 -vendor/bin/hw/android.hardware.drm@1.3-service.widevine
 -vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc
--vendor/lib/libwvhidl
+-vendor/etc/init/vendor.samsung.hardware.security.widevine.keyprov@1.0-service.rc
+vendor/lib/libwvhidl.so
 
 # Wi-Fi - N770FXXU8GVF2
-vendor/etc/init/wifi.rc
-vendor/etc/init/wifi_brcm.rc|7e10bdb418353a269ae966ccc43b8444e2fd97e6
 vendor/firmware/bcm4361B2_murata.hcd|098ac8ad27bd48428f8a08d4d2baa8c9ef40b5b9
 vendor/firmware/bcm4361B2_semco.hcd|830e22f9f7940e8617d08b8a935d9a1aed5ccde4
 vendor/firmware/bcmdhd_clm.blob|f12265f1e0c28d24db314b4cd9847f0d1b2685bc
