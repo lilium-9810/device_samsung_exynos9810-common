@@ -606,20 +606,6 @@ static void disable_spkamp_playback(void *proxy)
     struct audio_proxy *aproxy = proxy;
     char pcm_path[MAX_PCM_PATH_LEN];
 
-    if (aproxy->support_spkamp) {
-        snprintf(pcm_path, sizeof(pcm_path), "/dev/snd/pcmC%uD%u%c",
-                 SPKAMP_PLAYBACK_CARD, SPKAMP_PLAYBACK_DEVICE, 'p');
-
-        /* Disables Speaker AMP Playback Path */
-        if (aproxy->spkamp_playback) {
-            pcm_stop(aproxy->spkamp_playback);
-            pcm_close(aproxy->spkamp_playback);
-            aproxy->spkamp_playback = NULL;
-
-            ALOGI("proxy-%s: SPKAMP Playback PCM Device(%s) is stopped & closed!", __func__, pcm_path);
-        }
-    }
-
     return ;
 }
 
@@ -628,36 +614,6 @@ static void enable_spkamp_playback(void *proxy)
     struct audio_proxy *aproxy = proxy;
     struct pcm_config pcmconfig = pcm_config_spkamp_playback;
     char pcm_path[MAX_PCM_PATH_LEN];
-
-    if (aproxy->support_spkamp) {
-        snprintf(pcm_path, sizeof(pcm_path), "/dev/snd/pcmC%uD%u%c",
-                 SPKAMP_PLAYBACK_CARD, SPKAMP_PLAYBACK_DEVICE, 'p');
-
-        /* Enables Speaker AMP Playback path */
-        if (aproxy->spkamp_playback == NULL) {
-            aproxy->spkamp_playback = pcm_open(SPKAMP_PLAYBACK_CARD, SPKAMP_PLAYBACK_DEVICE,
-                                               PCM_OUT | PCM_MONOTONIC, &pcmconfig);
-            if (aproxy->spkamp_playback && !pcm_is_ready(aproxy->spkamp_playback)) {
-                /* pcm_open does always return pcm structure, not NULL */
-                ALOGE("proxy-%s: SPKAMP Playback PCM Device(%s) with SR(%u) PF(%d) CC(%d) is not ready as error(%s)",
-                      __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels,
-                      pcm_get_error(aproxy->spkamp_playback));
-                goto err_open;
-            }
-            ALOGI("proxy-%s: SPKAMP Playback PCM Device(%s) with SR(%u) PF(%d) CC(%d) is opened",
-                  __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels);
-
-            if (pcm_start(aproxy->spkamp_playback) == 0) {
-                ALOGI("proxy-%s: SPKAMP Playback PCM Device(%s) with SR(%u) PF(%d) CC(%d) is started",
-                      __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels);
-            } else {
-                ALOGE("proxy-%s: SPKAMP Playback PCM Device(%s) with SR(%u) PF(%d) CC(%d) cannot be started as error(%s)",
-                      __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels,
-                      pcm_get_error(aproxy->spkamp_playback));
-                goto err_open;
-            }
-        }
-    }
 
     return ;
 
