@@ -728,7 +728,4 @@ struct pcm_config pcm_config_hotword_capture = {
 // Duration for MMAP pcm configurations
 #define PREDEFINED_MMAP_CAPTURE_DURATION    2   // 2ms
 
-#endif  // __EXYNO// Duration for USB Playback
-#define PREDEFINED_USB_PLAYBACK_DURATION    10  // 10ms
-
-S_AUDIOPROXY_PCM_H__
+#endif  // __EXYNOS_AUDIOPROXY_PCM_H__

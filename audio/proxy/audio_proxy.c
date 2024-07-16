@@ -411,20 +411,6 @@ static void disable_out_loopback(void *proxy)
     struct audio_proxy *aproxy = proxy;
     char pcm_path[MAX_PCM_PATH_LEN];
 
-    if (aproxy->support_out_loopback) {
-        snprintf(pcm_path, sizeof(pcm_path), "/dev/snd/pcmC%uD%u%c",
-                 OUT_LOOPBACK_CARD, OUT_LOOPBACK_DEVICE, 'c');
-
-        /* Disables Output Loopback Path */
-        if (aproxy->out_loopback) {
-            pcm_stop(aproxy->out_loopback);
-            pcm_close(aproxy->out_loopback);
-            aproxy->out_loopback = NULL;
-
-            ALOGI("proxy-%s: Out Loopback PCM Device(%s) is stopped & closed!", __func__, pcm_path);
-        }
-    }
-
     return ;
 }
 
@@ -433,36 +419,6 @@ static void enable_out_loopback(void *proxy)
     struct audio_proxy *aproxy = proxy;
     struct pcm_config pcmconfig = pcm_config_out_loopback;
     char pcm_path[MAX_PCM_PATH_LEN];
-
-    if (aproxy->support_out_loopback) {
-        snprintf(pcm_path, sizeof(pcm_path), "/dev/snd/pcmC%uD%u%c",
-                 OUT_LOOPBACK_CARD, OUT_LOOPBACK_DEVICE, 'c');
-
-        /* Enables Output Loopback Path */
-        if (aproxy->out_loopback == NULL) {
-            aproxy->out_loopback = pcm_open(OUT_LOOPBACK_CARD, OUT_LOOPBACK_DEVICE,
-                                        PCM_IN | PCM_MONOTONIC, &pcmconfig);
-            if (aproxy->out_loopback && !pcm_is_ready(aproxy->out_loopback)) {
-                /* pcm_open does always return pcm structure, not NULL */
-                ALOGE("proxy-%s: Out Loopback PCM Device(%s) with SR(%u) PF(%d) CC(%d) is not ready as error(%s)",
-                      __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels,
-                      pcm_get_error(aproxy->out_loopback));
-                goto err_open;
-            }
-            ALOGI("proxy-%s: Out Loopback PCM Device(%s) with SR(%u) PF(%d) CC(%d) is opened",
-                  __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels);
-
-            if (pcm_start(aproxy->out_loopback) == 0) {
-                ALOGI("proxy-%s: Out Loopback PCM Device(%s) with SR(%u) PF(%d) CC(%d) is started",
-                      __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels);
-            } else {
-                ALOGE("proxy-%s: Out Loopback PCM Device(%s) with SR(%u) PF(%d) CC(%d) cannot be started as error(%s)",
-                      __func__, pcm_path, pcmconfig.rate, pcmconfig.format, pcmconfig.channels,
-                      pcm_get_error(aproxy->out_loopback));
-                goto err_open;
-            }
-        }
-    }
 
     return ;
 
